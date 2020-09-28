@@ -1,0 +1,21 @@
+<div class="card border-primary" style="width: 50%"> 
+    <div class="card-header">
+        <h5 class="card-title"><%= blog.blogTitle %></h5>
+        <p class="card-date"><%= blog.createDate.getUTCMonth() %>/<%= blog.createDate.getUTCDate() %>/<%= blog.createDate.getUTCFullYear() %></p>
+    </div>
+    <div class="card-body">
+        <p class="card-text"><%= blog.blogText %></p>
+    </div>
+    <div class="card-footer">
+        <div class="col-sm">
+           <ul class="nav justify-content-end nav-pills card-header-pills">
+             <li class="nav-item">
+                 <a class="nav-link" href="/blog-edit/5564b6c11de315e733f173cf"> <i class="fas fa-edit"></i></a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="/blog-delete/5564b6c11de315e733f173cf"> <i class="fas fa-trash-alt"></i></a>
+             </li>
+           </ul>
+  </div>	
+    </div>
+</div>
