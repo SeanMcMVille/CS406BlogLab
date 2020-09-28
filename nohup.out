@@ -1,0 +1,18 @@
+(node:18555) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+(node:18555) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
+Mongoose connected to mongodb://blogs:406BlogsP@localhost/blogger
+[0mGET / [36m304 [0m12.086 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m1.396 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m0.650 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m0.709 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.508 ms - -[0m
+[0mGET /blogList [36m304 [0m3.255 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.465 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m0.492 ms - -[0m
+[0mGET /css/all.min.css [36m304 [0m0.680 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m0.745 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.532 ms - -[0m
+[0mGET /blog-edit/5564b6c11de315e733f173cf [33m404 [0m2.916 ms - 1421[0m
+[0mPOST /GponForm/diag_Form?images/ [33m404 [0m1.578 ms - 1416[0m
+Mongoose disconnected
+Mongoose disconnected through Heroku app shutdown

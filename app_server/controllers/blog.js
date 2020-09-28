@@ -22,3 +22,13 @@ module.exports.blogList = function (req, res) {
 module.exports.blogAdd = function (req, res) {
     res.render('blogAdd', { title: 'Blog Add' });
 };
+
+/* GET blog edit page*/
+module.exports.blogEdit = function (req, res) {
+    res.render('blogEdit', { title: 'Blog Edit' });
+};
+
+/* GET blog delete page*/
+module.exports.blogDelete = function (req, res) {
+    res.render('blogDelete', { title: 'Blog Delete' });
+};
