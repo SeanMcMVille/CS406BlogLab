@@ -1,2 +1,2 @@
 # CS406BlogLab
-CSCI 406 - Blogger Lab3
+CSCI 406 - Blogger Lab4
