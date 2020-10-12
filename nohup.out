@@ -16,3 +16,48 @@ Mongoose connected to mongodb://blogs:406BlogsP@localhost/blogger
 [0mPOST /GponForm/diag_Form?images/ [33m404 [0m1.578 ms - 1416[0m
 Mongoose disconnected
 Mongoose disconnected through Heroku app shutdown
+(node:26417) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+(node:26417) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
+Mongoose connected to mongodb://blogs:406BlogsP@localhost/blogger
+[0mGET / [36m304 [0m10.737 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m1.310 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m0.712 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m0.479 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.481 ms - -[0m
+[0mGET /blogAdd [36m304 [0m2.322 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.468 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m0.511 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m0.602 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.533 ms - -[0m
+[
+  {
+    _id: 5f84c14e66354a6702e5bcd8,
+    blogTitle: 'Title',
+    blogText: 'Text',
+    createDate: 2020-10-12T20:49:18.534Z,
+    __v: 0
+  },
+  {
+    _id: 5f84c1fd66354a6702e5bcd9,
+    blogTitle: 'TitleNoText',
+    blogText: '',
+    createDate: 2020-10-12T20:52:13.028Z,
+    __v: 0
+  },
+  {
+    _id: 5f84c21a66354a6702e5bcda,
+    blogTitle: 'Created Edited',
+    blogText: 'Created Edited',
+    __v: 0,
+    createDate: 2020-10-12T21:00:02.589Z
+  }
+]
+[0mGET /api/blogs [32m200 [0m30.168 ms - 385[0m
+[0mGET /blogList [36m304 [0m42.278 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.665 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m0.611 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.553 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m0.606 ms - -[0m
+[0mGET /css/all.min.css [36m304 [0m0.674 ms - -[0m
+Mongoose disconnected
+Mongoose disconnected through Heroku app shutdown

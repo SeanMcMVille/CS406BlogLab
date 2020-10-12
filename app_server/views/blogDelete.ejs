@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-  </head>
-  <body>
-    <div class="container">
-      <% include ./partials/nav %>
-      <h1><%= title %></h1>
-      <p>The blog delete page is under construction.</p>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <% include ./partials/nav %>
+    <p></p>
+    <div class="card border-primary" style="width: 50%">
+      <form method="POST" action="/blogDelete/<%= blog._id %>" style="padding: 20px">
+        <div class="form-group">
+          <label for="summary" class="text-primary">Blog Title</label>
+          <input readonly class="form-control" id="title" name="blogTitle" value="<%= blog.blogTitle %>"></textarea>
+
+          <label for="detail" class="text-primary">Blog Text</label>
+          <textarea readonly class="form-control" id="text" name="blogText"><%= blog.blogText %></textarea>
+        </div>
+        <input type="submit" class="btn btn-danger float-right" value="blogDelete">
+        <a class="btn btn-primary float-right" style="margin-right: 25px" href="/blogList" role="button">Cancel</a>
+      </form>
     </div>
-  </body>
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
+  </div> <!-- container -->
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
 </html>
