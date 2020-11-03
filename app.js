@@ -1,9 +1,12 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var passport = require('passport');
 require('./app_api/models/db');
+require('./app_api/config/passport');
 
 //var indexRouter = require('./app_client/index');
 var routesApi = require('./app_api/routes/index');
@@ -29,6 +32,7 @@ app.use('/webfonts', express.static(__dirname + '/node_modules/@fortawesome/font
 app.use('/css', express.static(__dirname + '/public/stylesheets'));
 
 //app.use('/', indexRouter);
+app.use(passport.initialize());
 app.use('/api', routesApi);
 
 app.use(function(req, res) {
