@@ -91,7 +91,6 @@ app.controller('LoginController', ['$location', 'authentication', function Login
     };
 
     vm.doLogin = function() {
-      console.log("DoLogin Ran");
       vm.formError = "";
       authentication
         .login(vm.credentials)

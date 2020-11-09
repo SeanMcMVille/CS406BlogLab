@@ -29,7 +29,10 @@
           <p class="card-text">{{blog.blogText}}</p>
         </div>
         <div class="card-footer">
-          <div class = "col-sm">
+          <p class="card-text">
+            <small>Posted by {{blog.name}} on {{blog.createDate | date}} at {{blog.createDate | date:'shortTime'}}</small> 
+          </p>
+          <div ng-show='vm.postOwner().email=="{{blog.email}}"' class = "col-sm">
             <ul class="nav justify-content-end nav-pills card-header-pills">
               <li class="nav-item">
                 <a class="nav-link" href="#!/blogEdit/{{blog._id}}"> <i class="fas fa-edit"></i></a>

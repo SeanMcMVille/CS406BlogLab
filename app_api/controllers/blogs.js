@@ -58,7 +58,9 @@ module.exports.blogAdd = function (req, res) {
     .create({
       blogTitle: req.body.blogTitle,
       blogText: req.body.blogText,
-      createDate: req.body.date
+      createDate: req.body.date,
+      email: req.body.email,
+      name: req.body.name
     }, function(err, blog) {
       if (err) {
         console.log(err);
@@ -91,7 +93,6 @@ module.exports.blogEdit = function (req, res) {
       }
       blog.blogTitle = req.body.blogTitle;
       blog.blogText = req.body.blogText;
-      blog.createDate = req.body.date;
       blog.save(function(err, blog) {
         if (err) {
           sendJSONresponse(res, 404, err);

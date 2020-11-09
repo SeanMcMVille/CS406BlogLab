@@ -90,7 +90,7 @@ app.controller('HomeController', function HomeController() {
   vm.message = "Welcome to my blog site.";
 });
 
-app.controller('ListController', function ListController($http) {
+app.controller('ListController', ['$http', 'authentication', function ListController($http, authentication) {
   var vm = this;
   vm.pageHeader = {
     title: "Blog List"
@@ -100,11 +100,15 @@ app.controller('ListController', function ListController($http) {
     .then(function (data) {
       vm.blogs = data.data;
       vm.message = "";
-    })
+    }
     , (function (e) {
       vm.message = "Could not get blogs";
-    });
-});
+    }));
+  
+  vm.postOwner = function() {
+    return authentication.currentUser();
+  }
+}]);
 
 app.controller('AddController', [ '$http', '$location', 'authentication', function AddController($http, $location, authentication) {
   var vm = this;
@@ -114,18 +118,22 @@ app.controller('AddController', [ '$http', '$location', 'authentication', functi
   };
   vm.message = "";
 
+  var userInfo = authentication.currentUser();
+
   vm.submit = function() {
     var data = vm.blog;
     data.blogTitle = userForm.blogTitle.value;
     data.blogText = userForm.blogText.value;
+    data.email = userInfo.email;
+    data.name = userInfo.name;
 
     addBlog($http, authentication, data)
       .then(function(data) {
         $location.path('blogList');
-      })
+      }
       , (function (e) {
         vm.message = "Could not add blog"
-      });
+      }));
   }
 }]);
 
@@ -142,10 +150,10 @@ app.controller('EditController', [ '$http', '$routeParams', '$location', 'authen
     .then(function(data) {
       vm.blog = data.data;
       vm.message = "";
-    })
+    }
     , (function (e) {
       vm.message = "Could not retrieve blog at ID " + vm.id;
-    });
+    }));
 
   vm.submit = function() {
     var data = vm.blog;
@@ -156,10 +164,10 @@ app.controller('EditController', [ '$http', '$routeParams', '$location', 'authen
       .then(function(data) {
         vm.message = "";
         $location.path('blogList');
-      })
+      }
       , (function (e) {
         vm.message = "Could not update blog at ID " + vm.id;
-      });
+      }));
   }
 }]);
 
@@ -176,19 +184,19 @@ app.controller('DeleteController', [ '$http', '$routeParams', '$location', 'auth
   .then(function(data) {
     vm.blog = data.data;
     vm.message = "";
-  })
+  }
   , (function (e) {
     vm.message = "Could not retrieve blog at ID " + vm.id;
-  });
+  }));
 
   vm.submit = function() {
     deleteBlogById($http, authentication, vm.id)
       .then(function(data) {
         $location.path('blogList');
-      })
+      }
       , (function (e) {
         vm.message = "Could not delete blog"
-      });
+      }));
   }
 
   vm.cancel = function() {

@@ -61,3 +61,6 @@ Mongoose connected to mongodb://blogs:406BlogsP@localhost/blogger
 [0mGET /css/all.min.css [36m304 [0m0.674 ms - -[0m
 Mongoose disconnected
 Mongoose disconnected through Heroku app shutdown
+(node:27320) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+(node:27320) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
+Mongoose connected to mongodb://blogs:406BlogsP@localhost/blogger
