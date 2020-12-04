@@ -45,6 +45,12 @@ app.config(function($routeProvider) {
       controllerAs: 'vm'
     })
 
+    .when('/blogChat', {
+      templateUrl: 'pages/blogChat.html',
+      controller: 'ChatController',
+      controllerAs: 'vm'
+    })
+
     .otherwise({redirectTo: '/'});
 });
 
@@ -57,28 +63,24 @@ function getBlogById($http, id) {
   return $http.get('/api/blogs/' + id);
 }
 
-//function addBlog($http, data) {
-//  return $http.post('/api/blogs/blogAdd', data);
-//}
-
 function addBlog($http, authentication, data) {
   return $http.post('/api/blogs/blogAdd', data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }} );
 }
-
-//function updateBlogById($http, id, data) {
-//  return $http.put('/api/blogs/' + id, data);
-//}
 
 function updateBlogById($http, authentication, id, data) {
   return $http.put('/api/blogs/' + id, data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }} );
 }
 
-//function deleteBlogById($http, id) {
-//  return $http.delete('/api/blogs/' + id);
-//}
-
 function deleteBlogById($http, authentication, id) {
   return $http.delete('/api/blogs/' + id, { headers: { Authorization: 'Bearer '+ authentication.getToken() }} );
+}
+
+function getChat($http) {
+  return $http.get('/api/chat');
+}
+
+function updateChat($http, authentication, data) {
+  return $http.post('/api/chat', data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }} );
 }
 
 //Controllers
@@ -202,4 +204,55 @@ app.controller('DeleteController', [ '$http', '$routeParams', '$location', 'auth
   vm.cancel = function() {
     $location.path('blogList');
   }
+}]);
+
+app.controller('ChatController', [ '$http', '$scope', '$interval', 'authentication', 
+  function ChatController($http, $scope, $interval, authentication) {
+    var vm = this;
+    vm.pageHeader = {
+      title: 'Chat'
+    };
+
+    getChat($http)
+    .then(function(data) {
+      vm.chat = data.data.map(function (messages) {return (messages.name + ": " + messages.chat);}).join('\n');
+      vm.message = "";
+      $('#chatField').scrollTop($('#chatField')[0].scrollHeight);
+    }
+    , (function (e) {
+      vm.message = "Could not retrieve chat";
+    }));
+
+    var userInfo = authentication.currentUser();
+
+    vm.submit = function() {
+      //update the chat DB
+      var data = {};
+      data.chat = userForm.postField.value;
+      data.name = userInfo.name;
+      
+      updateChat($http, authentication, data)
+      .then(function(data) {
+        vm.message = "";
+      }
+      , (function (e) {
+        vm.message = "Could not post message";
+      }));
+    }
+
+    $scope.callAtInterval = function() {
+      //Update chatField with chat DB
+      getChat($http)
+      .then(function(data) {
+        //Returns a string using data returned from DB, so I can piece everything together here...
+        // seems gross but only way I could think of doing formatting.
+        vm.chat = data.data.map(function (messages) {return (messages.name + ": " + messages.chat);}).join('\n');
+        vm.message = "";
+        $('#chatField').scrollTop($('#chatField')[0].scrollHeight);
+      }
+      , (function (e) {
+        vm.message = "Could not retrieve chat";
+      }));
+    }
+    $interval( function(){$scope.callAtInterval();}, 3000, 0, true);
 }]);

@@ -2,6 +2,7 @@
 <head>
   <script src="/lib/angular.min.js"></script>
   <script src="/lib/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/all.min.css">
@@ -90,6 +91,20 @@
           </div>
              <input type="submit" class="btn btn-danger float-right" value="Delete Blog">
              <button ng-click="vm.cancel()" ng-controller="DeleteController" class="btn btn-primary float-right" style="margin-right: 25px">Cancel</button>
+        </form>
+      </div>
+  </script>
+
+  <script type="text/ng-template" id="pages/blogChat.html">
+    <p>{{vm.message}}</p>
+      <div class="card border-primary" style="width: 75%">  
+        <form name="userForm" ng-submit="vm.submit()" ng-controller="ChatController" style="padding: 20px">
+          <div class="form-group">
+            <label for="detail" class="text-primary">Chat</label>
+            <textarea readonly class="form-control" id="chatField" name="chatField" rows="10">{{vm.chat}}</textarea>
+            <input class="form-control" id="postField" name="postField">
+          </div>
+          <input type="submit" class="btn btn-primary" value="Post">
         </form>
       </div>
   </script>
